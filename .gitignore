@@ -1,0 +1,14 @@
+*
+!*.*
+!*/
+.DS_Store
+*~
+errortest
+miscdocs
+cli/misc/randfile/*png
+cli/av-randomize/avatars
+cli/gb-randomize/badges
+cli/ot-randomize/overtexts.json
+cli/scratch
+*.json
+bin
