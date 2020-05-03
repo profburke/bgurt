@@ -98,11 +98,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	newBadges := pick(allBadges, microbadge.TotalSlots)
 
-	fmt.Printf("badges: %v", newBadges)
-
 	badgeNumbers := badgeIDs(newBadges)
-
-	fmt.Printf("badge numbers: %v", badgeNumbers)
 
 	if verbose {
 		fmt.Println("sending new badges to server")
