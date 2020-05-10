@@ -48,7 +48,7 @@ The toolkit is designed using a layered approach.
 
 - **AWS Lambdas and Step Functions**: these functions allow you to run your GUR manipulation workflow _in the cloud_, using AWS's serverless functionality.
 
-Binaries are available for macOS, Windows, and Linux (Specifically, Raspberry Pi; other Linux distributions are possible). Versions for AWS Lambda are currently only available as source code.
+Binaries are available for macOS, Windows, and Linux (Specifically, Raspberry Pi; other Linux distributions are possible). AWS Lambda functions are currently only available as source code.
 
 ## How to Use
 
@@ -66,7 +66,7 @@ To update your displayed microbadges, first use the `mb-fetch` program to downlo
 mb-fetch > badges.json
 ```
 
-You should re-run the above command after purchasing new microbadge(s). Then run 
+After the first run of `mb-fetch`, you only need to re-run it after purchasing new microbadge(s). Then run 
 
 ```
 mb-randomize badges.json
@@ -80,29 +80,149 @@ av-randomize <avfolder>
 
 where `<avdfolder>` is the name of a folder that contains one or more image files you would like to use as your avatar. The image files need to be either in GIF, JPG, or PNG format and must be 64x64 pixels or smaller.
 
+To update your overtext, run
+
+```
+ot-randomize <overtextfile>
+```
+
+where `<overtextfile>` is a file containing the different possible overtexts you would like to display. Currently you need to specify both the avatar and geekbadge overtexts. The file should be formatted as a JSON array where each entry is a pair of overtexts. For example:
+
+```
+[
+    {
+        "Avatar": "Can sour cream go bad?",
+        "Badge": "Go Speed Racer!"
+    },
+    {
+        "Avatar": "Are Santa's helpers called subordinate clauses?",
+        "Badge": "There's a fine line between a superpower and a chronic medical condition."
+    },
+    {
+        "Avatar": "What happens if you get scared half to death twice?",
+        "Badge": "You don't build a 100 foot robot out of nothing"
+    }
+]
+```
+
+To update your geekbadge, run 
+
+```
+gb-randomze <geekbadgefolder>
+```
+
+where `<geekbadgefolder>` is a folder containing files that describe different geekbadges. These geekbadge files are in JSON format. An example is as follows:
+
+```
+{
+   "OuterBorder":{"R":106,"G":90,"B":205,"A":255},
+   "InnerBorder"{"R":138,"G":43,"B":226,"A":255},
+   "BarPosition":40,
+   "LeftBox":{
+          "Text":"Play",
+          "Background":{"R":85,"G":107,"B":47,"A":255},
+          "TextColor":{"R":152,"G":251,"B":152,"A":255},
+          "TextStart":4
+   },
+   "RightBox":{
+          "Text":"Always",
+          "Background":{"R":152,"G":251,"B":152,"A":255},
+          "TextColor":{"R":85,"G":107,"B":47,"A":255},
+          "TextStart":44
+   }
+}
+```
+
+Tools to easily specify geekbadge descriptions are not yet developed, so currently you will have to create them by hand.
+
+
 **NOTE:** The functionality of these programs will likely change.
 
 --
 
 ##### I'd like some customization please: mb-set, mb-fetch, av-set, ot-set, gb-set, etc.
 
-Mention that these can be strung together using pipes, etc. can use bash scripts, can also invoke using language of your choice.
-Add a perl, lua, or ??? example
+This next set of programs sits at a slightly lower level than the previous set. They are designed mainly to be combined using command line pipes. Alternatively they can be invoked by scripts written in other langauges (_such as Python, Lua, Ruby, etc., all of which have some sort of_ exec _functionality_).
+
+```
+av-fetch <filename>
+```
+
+Fetches your current avatar and saves it to the file named `<filename>`.
+
+```
+av-set <filename>
+```
+
+Sets your avatar using the image in the file named `<filename>`. This image must be either a GIF, JPG, or PNG and must be a maximum of 64x64 pixels.
+
+```
+gb-fetch
+```
+
+Fetches your current geekbadge and writes a JSON representation to standard out.
+
+```
+gb-set <filename>
+```
+
+Sets your geekbadge. The file, `<filename>` should contain a JSON representation of your geekbadge. See above for an example of the format.
+
+```
+mb-fetch
+```
+
+Retrieves all your microbadges and writes them to standard out as a JSON data structure (and array of objects).
+
+```
+mb-fetchlot <slotnumber>
+```
+
+Not actually implemented. Also not sure this is needed&mdash;probably should be wrapped into `mb-fetch` using an additional command line parameter.
+
+```
+mb-set <badgedID1> <badgeID2> ... <badgeID5>
+```
+
+Run this program passing in 5 badge IDs to updated your microbadges. 
+
+```
+mb-setslot --slot <number> --microbadge <badgeID>
+```
+
+Use the `--slot` flag to specify slot number and the `--microbadge` flag to specify a microbadge ID. Sets the specified slot to the given microbadge. Probably will merge this in with the `mb-set` program using appopriate flags.
+
+```
+ot-fetch [--json]
+```
+
+Retrieves your overtext and writes to standard out in a simple text format. If the `--json` switch is given, writes it as a JSON object.
+
+```
+ot-set --avatar "avatar overtext" --badge "badge overtext"
+```
+
+Sets your overtext to the values given on the command line.
+
+
 
 ##### I'm into gory technical details: library files....
 
+At the bottom of the stack are the various library files: avatar.go, bggclient.go, geekbadge.go, microbadge.go, overtext.go, parser.go (_currently just a shell_) and a few other utility files.
+
+Use these libraries to build your own command-line, TUI, or GUI tools.
+
+
 ### Running on a schedule
 
-If you want to change your microbadges periodically, e.g. every day at 6pm, you can use
+If you want to change your microbadges periodically, e.g. every day at 6pm, you will need a way to run the command line tools on a schedule. For macOS and Linux, your best bet is to use `cron`. 
 
-cron for macOS and Linux
+A quick internet seach will turn up many articles on using cron, here's a reasonably good one: [How to use cron in Linux](https://opensource.com/article/17/11/how-use-cron-linux).
 
-scheduled tasks for Windows
-
-e.g. schtasks /create /tn calculate /tr calc /sc weekly  /d MON /st 06:05 /ru "System"
+On Windows, you can make use of Scheduled Tasks. This [article](https://www.digitalcitizen.life/how-create-task-basic-task-wizard) was written relatively recently. I have not verified it since I don't easily have access to a Windows machine. I'll update as soon as possible. In the meantime, if you are a Windows user, I encourage you to propose an update to this README if there are any inaccuracies in the linked document.
 
 
-_**For more examples and usage, please refer to the [Wiki][wiki].**_
+_**For more examples and usage, please refer to the [Wiki](https://github.com/profburke/bgurt/wiki).**_
 
 
 ## How to Install
@@ -185,6 +305,7 @@ Ensure the PR description clearly describes the problem and solution. It should 
 
 Preferably, submit documentation changes by pull request. However, feel free to post your changes to an [issue](https://github.com/profburke/bgurt/issues/new) or send them to the project team.
 
+It would be nice to have a site for this project that we could host on Github Pages. If you have an interest in helping build that, please let me know.
 
 
 <!-- ### Credits -->
