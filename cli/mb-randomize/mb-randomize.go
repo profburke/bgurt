@@ -36,8 +36,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 func badgeIDs(badges []microbadge.Microbadge) (result []uint) {

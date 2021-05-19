@@ -30,8 +30,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/profburke/bgg/avatar"
-	"github.com/profburke/bgg/cli/utilities"
+	"github.com/profburke/bgurt/avatar"
+	"github.com/profburke/bgurt/cli/utilities"
 )
 
 func main() {

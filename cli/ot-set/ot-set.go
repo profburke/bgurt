@@ -29,8 +29,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/overtext"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/overtext"
 )
 
 func main() {

@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/profburke/bgg/aws/utilities"
-	"github.com/profburke/bgg/bggclient"
-	"github.com/profburke/bgg/geekbadge"
+	"github.com/profburke/bgurt/aws/utilities"
+	"github.com/profburke/bgurt/bggclient"
+	"github.com/profburke/bgurt/geekbadge"
 	"golang.org/x/image/colornames"
 )
 

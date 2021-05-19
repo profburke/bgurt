@@ -30,7 +30,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 func init() {

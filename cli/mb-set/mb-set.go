@@ -30,8 +30,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 func parseParameters(args []string) (badgeNumbers []uint) {

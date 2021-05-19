@@ -22,7 +22,7 @@
 // This Lambda function expects a notification as input and sends the notification's
 // message to the SNS topic specified by the TOPICARN environment variable.
 //
-// The notification type is defined in the package github.com/profburke/bgg/aws/utilities
+// The notification type is defined in the package github.com/profburke/bgurt/aws/utilities
 //
 package main
 
@@ -35,7 +35,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sns"
-	"github.com/profburke/bgg/aws/utilities"
+	"github.com/profburke/bgurt/aws/utilities"
 )
 
 func HandleRequest(notification utilities.Notification) (err error) {

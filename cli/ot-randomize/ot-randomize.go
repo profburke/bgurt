@@ -35,8 +35,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/overtext"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/overtext"
 )
 
 // TODO: add a flag to specify a log file

@@ -36,8 +36,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/geekbadge"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/geekbadge"
 )
 
 func visit(files *[]string) filepath.WalkFunc {

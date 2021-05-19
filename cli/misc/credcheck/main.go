@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/profburke/bgg/cli/utilities"
+	"github.com/profburke/bgurt/cli/utilities"
 )
 
 func main() {

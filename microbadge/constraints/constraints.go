@@ -27,8 +27,6 @@ package constraints
 import "github.com/profburke/bgg/microbadge"
 
 type Constraints interface {
-	IsAllowed(microbadge microbadge.Microbadge, slot uint) (result bool)
-	IsNotAllowed(microbadge microbadge.Microbadge, slot uint) (result bool)
 	Pick(badges []microbadge.Microbadge) (chosenBadges []microbadge.Microbadge)
 }
 
@@ -39,6 +37,8 @@ func LoadConstraintsData(filepath string) (cd ConstraintsData, err error) {
 	return ConstraintsData{}, nil
 }
 
+// TODO: I'm going back and forth between badge as int and badge as microbadge.Microbadge;
+// need to decide
 type badgeSlotPair struct {
 	badge uint
 	slot  uint
@@ -64,14 +64,26 @@ func (dc defaultConstraints) IsNotAllowed(m microbadge.Microbadge, slot uint) (r
 
 func (dc defaultConstraints) Pick(badges []microbadge.Microbadge) (chosenBadges []microbadge.Microbadge) {
 	// create an empty set of possible microbadges for each slot
-	// for each microbadge:
-	//     for each slot:
-	//          if badge is allowed for slot, add it to appropriate set
-	//
-	// for each slot:
-	//     randomly pick a badge from its set
-	//     remove badge from all the remaining sets
-	return nil
+	// possibles := ...
+
+	for mb := range badges {
+		for slot := 1; slot < microbadge.TotalSlots; slot++ {
+			if dc.IsAllowed(mb, slot) {
+				// put badge in set for slot in the possibles data structure
+			}
+		}
+	}
+
+	for slot := 1; slot < microbadge.TotalSlots; slot++ {
+		// p := randomly pick a badge from its set
+		// chosenBadges = append(chosenBadges, p)
+
+		for otherSlot := slot + 1; otherSlot < microbadge.TotalSlots; otherSlot++ {
+			// remove p from otheSlot
+		}
+	}
+
+	return
 }
 
 func New(constraintsData ConstraintsData) (constraints Constraints) {

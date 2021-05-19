@@ -33,7 +33,7 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/profburke/bgg/bggclient"
+	"github.com/profburke/bgurt/bggclient"
 )
 
 var avatarRegEx *regexp.Regexp

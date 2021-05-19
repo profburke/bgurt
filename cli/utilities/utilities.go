@@ -32,8 +32,8 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
-	"github.com/profburke/bgg/bggclient"
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/bggclient"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 // TODO: create a report function that writes to stderr, stdout (if verbose),

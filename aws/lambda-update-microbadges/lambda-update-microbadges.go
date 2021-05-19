@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/profburke/bgg/aws/utilities"
-	"github.com/profburke/bgg/bggclient"
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/aws/utilities"
+	"github.com/profburke/bgurt/bggclient"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 var badges []uint

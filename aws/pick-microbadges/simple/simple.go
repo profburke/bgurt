@@ -37,8 +37,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"github.com/profburke/bgg/aws/utilities"
-	"github.com/profburke/bgg/microbadge"
+	"github.com/profburke/bgurt/aws/utilities"
+	"github.com/profburke/bgurt/microbadge"
 )
 
 func downloadMicrobadges(bucketname, itemname string) (badges []microbadge.Microbadge, err error) {

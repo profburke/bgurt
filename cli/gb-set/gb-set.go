@@ -31,8 +31,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/profburke/bgg/cli/utilities"
-	"github.com/profburke/bgg/geekbadge"
+	"github.com/profburke/bgurt/cli/utilities"
+	"github.com/profburke/bgurt/geekbadge"
 )
 
 func main() {

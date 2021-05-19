@@ -28,8 +28,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/profburke/bgg/avatar"
-	"github.com/profburke/bgg/cli/utilities"
+	"github.com/profburke/bgurt/avatar"
+	"github.com/profburke/bgurt/cli/utilities"
 )
 
 // TODO: deal with detecting image type and applying appropriate file extension
