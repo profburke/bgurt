@@ -31,7 +31,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/profburke/bgg/bggclient"
+	"github.com/profburke/bgurt/bggclient"
 )
 
 type Group struct {

@@ -32,7 +32,7 @@ import (
 	"net/url"
 	"regexp"
 
-	"github.com/profburke/bgg/bggclient"
+	"github.com/profburke/bgurt/bggclient"
 )
 
 type Overtext struct {

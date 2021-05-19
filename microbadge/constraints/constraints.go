@@ -24,7 +24,7 @@
 //
 package constraints
 
-import "github.com/profburke/bgg/microbadge"
+import "github.com/profburke/bgurt/microbadge"
 
 type Constraints interface {
 	Pick(badges []microbadge.Microbadge) (chosenBadges []microbadge.Microbadge)

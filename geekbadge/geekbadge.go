@@ -33,7 +33,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/profburke/bgg/bggclient"
+	"github.com/profburke/bgurt/bggclient"
 )
 
 type Box struct {
